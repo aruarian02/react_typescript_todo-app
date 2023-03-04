@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Form } from "./components/Form";
+import { List } from "./components/List";
+import { Todo } from "./interfaces/Todo";
+
 
 function App() {
+  const [todos, setTodos] = React.useState<Todo[]>([
+    {
+      id: 1,
+      title: "공부하기",
+      complete: true
+    },
+    {
+      id: 2,
+      title: "빨래하기",
+      complete: false
+    },
+  ])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <List todos={todos} setTodos={setTodos} />
+      <Form todos={todos} setTodos={setTodos} />
     </div>
   );
 }
